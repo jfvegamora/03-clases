@@ -36,29 +36,34 @@ closeModal.addEventListener('click', function () {
 });
 
 // --- Lógica para el Modo Oscuro ---
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Selecciona el botón de modo oscuro
     const darkModeToggle = document.getElementById('dark-mode-toggle');
-
-    // Selecciona el body
     const body = document.body;
 
-    // Agrega un 'listener' de evento al botón
-    darkModeToggle.addEventListener('click', () => {
-        // Alterna (añade/quita) la clase 'dark-mode' al body
-        body.classList.toggle('dark-mode');
+    const setButtonText = () => {
+        if (body.classList.contains('dark-mode')) {
+            darkModeToggle.textContent = 'Modo Claro';
+        } else {
+            darkModeToggle.textContent = 'Modo Oscuro';
+        }
+    };
 
-        // Opcional: Guardar la preferencia del usuario en el localStorage
+    // Cargar la preferencia del usuario al iniciar
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+    setButtonText();
+
+    // Alternar el modo al hacer clic
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        setButtonText();
+
+        // Guardar la preferencia del usuario
         if (body.classList.contains('dark-mode')) {
             localStorage.setItem('darkMode', 'enabled');
         } else {
             localStorage.setItem('darkMode', 'disabled');
         }
     });
-
-    // Opcional: Cargar la preferencia del usuario al iniciar la página
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        body.classList.add('dark-mode');
-    }
 });
