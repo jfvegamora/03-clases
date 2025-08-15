@@ -142,3 +142,9 @@ body.dark-mode .dark-mode-toggle {
 body.dark-mode .dark-mode-toggle:hover {
     background-color: #444;
 }
+
+.modal__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}

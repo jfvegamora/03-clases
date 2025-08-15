@@ -1,7 +1,7 @@
 
 const button = document.querySelector('.button');
 const modal = document.querySelector('.modal');
-const closeModal = document.querySelector('.modal__close');
+const closeModal = document.getElementById('modal-close-button');
 
 console.log(modal.classList); //lista las clases del elemento
 console.log(modal.classList[1]); //método 1: lista el item 1 de la lista de clases del elemento
@@ -67,3 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Cierra la ventana modal al presionar la tecla ESC
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('show')) {
+        modal.classList.remove('show');
+        button.classList.remove('red');
+    }
+});
+
