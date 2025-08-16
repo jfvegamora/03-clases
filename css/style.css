@@ -148,3 +148,7 @@ body.dark-mode .dark-mode-toggle:hover {
     justify-content: center;
     gap: 1rem;
 }
+
+#modal-close-button {
+    background-color: black;
+}
